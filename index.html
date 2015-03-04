@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Natero Internship</title>
+    <meta name="description" content="Webpage for Frontend Questions">
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body ng-app="App"> 
+    <h1>Question 1 (Sorted ToDo List)</h1>
+    <div ng-controller="QuestionOne">
+    <form ng-submit="updateList()">
+      <input type="text" ng-model="listText"  size="30"
+             placeholder="ie: 'trees, apple, bees'">
+      <input class="btn-primary" type="submit" value="Update">
+    </form>
+
+      <ul>
+        <li ng-repeat="todo in todos | orderBy:'text'">
+          <span>{{todo.text}}</span>
+          <span class="glyphicon glyphicon-remove-sign" ng-click="remove(todo)"></span>
+        </li>
+      </ul>
+      <span>Output: {{output()}}</span>
+    </div>
+
+    <h1>Question 2 (Dijkstra)</h1>
+    <div ng-controller="QuestionTwo">
+      <h4>Route: {{route()}}</h4>
+    </div>
+    <h1>Question 3 (Random Color)</h1>
+    <div ng-controller="QuestionThree">
+      <h4>Rows: {{rows}}, Cols: {{cols}}</h4>
+        <div ng-repeat="i in data">
+            <span class="box {{color($parent.$index, $index)}}" ng-repeat="j in i track by $index" ng-click="addColor($parent.$index, $index)"></span>
+        </div>
+        <div>JSON: {{output()}}</div>
+    </div>
+  </body>
+</html>
